@@ -1,9 +1,6 @@
 package com.company;
 
-import com.company.lineDrawers.BresenhamLineDrawer;
-import com.company.lineDrawers.DDALineDrawer;
-import com.company.lineDrawers.LineDrawer;
-import com.company.lineDrawers.WuLineDrawer;
+import com.company.lineDrawers.*;
 import javafx.scene.shape.DrawMode;
 
 import javax.swing.*;
@@ -35,8 +32,8 @@ public class DrawPanel extends JPanel implements MouseMotionListener, KeyListene
 
         //LineDrawer ld = new DDALineDrawer();
         //LineDrawer ld = new BresenhamLineDrawer(pd);
-       LineDrawer ld = new WuLineDrawer();
-        int color = Color.HSBtoRGB(0, 1, 1f);
+       LineDrawer ld = new Wu();
+      //  int color = Color.HSBtoRGB(0, 1, 1f);
 //        switch (switch1) {
 //            case DDA:
 //                ld = new DDALineDrawer(pd);
@@ -51,7 +48,8 @@ public class DrawPanel extends JPanel implements MouseMotionListener, KeyListene
         if (ld != null) {
             ld.setPixelDrawer(pd);
         }
-        ld.drawLine(getWidth() / 2, getHeight() / 2, cx, cy, new Color(color));
+        ld.drawLine(getWidth() / 2, getHeight() / 2, cx, cy, Color.YELLOW);
+       // ld.drawLine( 45, 70, 20, 300, Color.BLACK);
         //ld.drawLine( getWidth()/2, getHeight()/2, 300, 500 , Color.BLUE);
 
 //        EllipseDrawer ed = new BresenhamEllipse();
