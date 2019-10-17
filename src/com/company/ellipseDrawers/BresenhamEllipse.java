@@ -1,7 +1,6 @@
-package com.company;
+package com.company.ellipseDrawers;
 
-import com.company.EllipseDrawer;
-import com.company.PixelDrawer;
+import com.company.pixelDrawers.PixelDrawer;
 
 import java.awt.*;
 

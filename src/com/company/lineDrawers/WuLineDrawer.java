@@ -1,12 +1,11 @@
 package com.company.lineDrawers;
 
-import com.company.PixelDrawer;
+import com.company.pixelDrawers.PixelDrawer;
 
 import java.awt.*;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.round;
-import static java.lang.StrictMath.floor;
 
 
 public class WuLineDrawer implements LineDrawer {
