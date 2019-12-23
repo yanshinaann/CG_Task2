@@ -1,4 +1,4 @@
-package com.company.lineDrawers;
+package com.company.old;
 
     public enum Switch {
         DDA,

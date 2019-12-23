@@ -1,7 +1,12 @@
 package com.company;
 
+import com.company.ellipse.*;
+import com.company.old.EllipseDrawer1;
 import com.company.lineDrawers.*;
-import com.company.pixelDrawers.ImageBufferPixelDrawer;
+import com.company.old.LineDrawer1;
+import com.company.pie.PieDrawer;
+import com.company.pie.UnfilledBresPie;
+import com.company.pixelDrawers.BufferPixelDrawer;
 import com.company.pixelDrawers.PixelDrawer;
 
 import javax.swing.*;
@@ -12,11 +17,13 @@ import java.awt.image.BufferedImage;
 public class DrawPanel extends JPanel implements MouseMotionListener, KeyListener, MouseListener {
     private int cx = 500, cy = 500;
     private PixelDrawer pd;
-  //private Switch switch1 = Switch.BREZ;
+    //private Switch switch1 = Switch.BREZ;
     private boolean isMouseLineActive = true;
-    private LineDrawer ld;
+    private LineDrawer1 ld;
     private BufferedImage bufferedImage;
-
+    private EllipseDrawer1 ellipseDrawer1;
+    private PieDrawer pieDrawer;
+    private EllipseDrawer ellipseDrawer;
 
     DrawPanel() throws HeadlessException {
         super();
@@ -32,14 +39,27 @@ public class DrawPanel extends JPanel implements MouseMotionListener, KeyListene
     public void paint(Graphics g) {
 
         bufferedImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
-        pd = new ImageBufferPixelDrawer(bufferedImage);
-
+        pd = new BufferPixelDrawer(bufferedImage);
+/*  Двигающаяся линия
         if (i % 2 == 0) {
-            ld = new BresenhamLineDrawer(pd);
+            ld = new BresenhamLineDrawer1(pd);
         } else ld = new Wu();
 
         if (pd != null) ld.setPixelDrawer(pd);
         ld.drawLine(getWidth() / 2, getHeight() / 2, cx, cy, Color.YELLOW);
+ */
+
+        ld = new BresenhamLineDrawer1(pd);
+
+
+
+        pieDrawer = new UnfilledBresPie(pd, ld);
+        pieDrawer.setLineDrawer(ld);
+        pieDrawer.setPixelDrawer(pd);
+        pieDrawer.draw(getWidth() / 2, getHeight() / 2,100 ,100, 15,23, Color.GRAY);
+
+
+
         g.drawImage(bufferedImage, 0, 0, null);
 
         //LineDrawer ld = new DDALineDrawer();

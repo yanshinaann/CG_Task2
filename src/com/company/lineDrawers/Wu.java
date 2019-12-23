@@ -1,5 +1,6 @@
 package com.company.lineDrawers;
 
+import com.company.old.LineDrawer1;
 import com.company.pixelDrawers.PixelDrawer;
 
 import java.awt.Color;
@@ -9,7 +10,7 @@ import static java.lang.Math.ceil;
 import static java.lang.Math.floor;
 
 
-public class Wu implements LineDrawer {
+public class Wu implements LineDrawer1 {
     private PixelDrawer pd;
 
     @Override
@@ -23,10 +24,10 @@ public class Wu implements LineDrawer {
         int dy = y2 - y1;
 
         // calculate steps required for generating pixels
-        int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+        int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);//наклон рассчитывается по большей проекции
 
         // calculate increment in x & y for each steps
-        float Xinc = dx / (float) steps;
+        float Xinc = dx / (float) steps;// на сколько за один шаг должен ув-ться параметр каждой
         float Yinc = dy / (float) steps;
 
         // Put pixel for each step
@@ -35,14 +36,14 @@ public class Wu implements LineDrawer {
         double k;
         for (int i = 0; i <= steps; i++) {
             if (Math.abs(dx) > Math.abs(dy))
-                k = (Y - floor(Y));
+                k = (Y - floor(Y)); //коэф яркости
             else
                 k = (X - floor(X));
 
             Color firstPixel = new Color((int) (color.getRed() * k), (int) (color.getGreen() * k), (int) (color.getBlue() * k));
             Color secondPixel = new Color((int) (color.getRed() * (1 - k)), (int) (color.getGreen() * (1 - k)), (int) (color.getBlue() * (1 - k)));
-            pd.drawPixel((int) floor(X), (int) floor(Y), secondPixel);  // put pixel at (X,Y)
-            pd.drawPixel((int) ceil(X), (int) ceil(Y), firstPixel);
+            pd.pixel((int) floor(X), (int) floor(Y), secondPixel);  // put pixel at (X,Y) один унизу округляется
+            pd.pixel((int) ceil(X), (int) ceil(Y), firstPixel);//другой открывается вверх
             X += Xinc;// increment in x at each step
             Y += Yinc;// increment in y at each step
         }

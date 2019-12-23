@@ -1,10 +1,10 @@
-package com.company.ellipseDrawers;
+package com.company.old;
 
 import com.company.pixelDrawers.PixelDrawer;
 
 import java.awt.*;
 
-public class BresenhamEllipse implements EllipseDrawer {
+public class BresenhamEllipse implements EllipseDrawer1 {
     @Override
     public void drawCircle(PixelDrawer pd, int r, int x0, int y0, Color c) {
         int x = 0;
@@ -15,7 +15,7 @@ public class BresenhamEllipse implements EllipseDrawer {
             //       drawpixel(X1 + x, Y1 + y);
             //       drawpixel(X1 + x, Y1 - y);
             //       drawpixel(X1 - x, Y1 + y);
-            pd.drawPixel(x+x0, y+y0, c);
+            pd.pixel(x+x0, y+y0, c);
 
             error = 2 * (delta + y) - 1;
             if ((delta < 0) && (error <= 0)) {

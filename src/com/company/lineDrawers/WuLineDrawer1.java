@@ -1,5 +1,6 @@
 package com.company.lineDrawers;
 
+import com.company.old.LineDrawer1;
 import com.company.pixelDrawers.PixelDrawer;
 
 import java.awt.*;
@@ -8,7 +9,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.round;
 
 
-public class WuLineDrawer implements LineDrawer {
+public class WuLineDrawer1 implements LineDrawer1 {
 
     private PixelDrawer pd;
 
@@ -20,8 +21,8 @@ public class WuLineDrawer implements LineDrawer {
     @Override
     public void drawLine(int x1, int y1, int x2, int y2, Color c) {
 
-        pd.drawPixel(x1, y1, c);
-        pd.drawPixel(x2, y2, c);
+        pd.pixel(x1, y1, c);
+        pd.pixel(x2, y2, c);
 
         if (Math.abs(y2 - y1) > Math.abs(x2 - x1)) {
             double dx = x2 - x1;
@@ -32,10 +33,10 @@ public class WuLineDrawer implements LineDrawer {
             for (int y = y1 + 1; y <= y2 - 1; y++) {
                 double t = 1 - (x - (int) x);
                 Color d = setColor(c, t);
-                pd.drawPixel((int) x, y, d);
+                pd.pixel((int) x, y, d);
                 t = x - (int) x;
                 d = setColor(c, t);
-                pd.drawPixel((int) x + 1, y, d);
+                pd.pixel((int) x + 1, y, d);
                 x += gradient;
             }
         } else {
@@ -49,10 +50,10 @@ public class WuLineDrawer implements LineDrawer {
             for (x = x1 + 1; x <= x2 - 1; x++) {
                 double t = 1 - (y - (int) y);
                 Color d = setColor(c, t);
-                pd.drawPixel(x, (int) y, d);
+                pd.pixel(x, (int) y, d);
                 t = y - (int) y;
                 d = setColor(c, t);
-                pd.drawPixel(x, (int) y + 1, d);
+                pd.pixel(x, (int) y + 1, d);
                 y += gradient;
 
             }

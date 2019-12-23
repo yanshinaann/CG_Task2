@@ -1,17 +1,18 @@
 package com.company.lineDrawers;
 
 
+import com.company.old.LineDrawer1;
 import com.company.pixelDrawers.PixelDrawer;
 
 import java.awt.*;
 
 import static java.lang.Math.abs;
 
-public class BresenhamLineDrawer implements LineDrawer {
+public class BresenhamLineDrawer1 implements LineDrawer1 {
     PixelDrawer pd;
     Graphics2D g;
 
-    public BresenhamLineDrawer(PixelDrawer pd) {
+    public BresenhamLineDrawer1(PixelDrawer pd) {
         this.pd = pd;
     }
 
@@ -53,7 +54,7 @@ public class BresenhamLineDrawer implements LineDrawer {
         x = xstart;
         y = ystart;
         err = el / 2;
-        pd.drawPixel(x, y, c);//ставим первую точку
+        pd.pixel(x, y, c);//ставим первую точку
 
         for (int t = 0; t < el; t++)//идём по всем точкам
         {
@@ -67,7 +68,7 @@ public class BresenhamLineDrawer implements LineDrawer {
                 y += pdy;
             }
 
-            pd.drawPixel(x, y, c);
+            pd.pixel(x, y, c);
         }
     }
 
